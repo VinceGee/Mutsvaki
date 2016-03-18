@@ -23,7 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
 /**
  * Created by VinceGee on 03/16/2016.
  */
@@ -172,7 +172,7 @@ public class ListResult extends ListActivity {
                      * */
                     ListAdapter adapter = new SimpleAdapter(
                             ListResult.this, idiomsList,
-                            R.layout.list_view, new String[] { TAG_ID, TAG_ENTRY, TAG_MEANING},
+                            R.layout.list_view_yesearch, new String[] { TAG_ID, TAG_ENTRY, TAG_MEANING},
                             new int[] { R.id.id, R.id.entry, R.id.meaning});
                     // updating listview
                     setListAdapter(adapter);
