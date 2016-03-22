@@ -1,4 +1,3 @@
-/*
 package com.empire.vince.mutsvaki.addingtomysql;
 
 import android.os.Bundle;
@@ -26,11 +25,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.empire.vince.mutsvaki.JSONParser;
+import com.empire.vince.mutsvaki.R;
 
-*/
-/**
+/*
  * Created by VinceGee on 03/16/2016.
- *//*
+ */
 
 public class AddNewIdiom extends Activity implements OnClickListener {
 
@@ -44,7 +43,7 @@ public class AddNewIdiom extends Activity implements OnClickListener {
     private int success;//to determine JSON signal insert success/fail
 
     // url to insert new idiom (change accordingly)
-    private static String url_insert_new = "http://172.16.16.183/idiomjson/insertnew.php";
+    private static String url_insert_new = "http://10.41.100.190/merchant/insertnew.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -69,29 +68,27 @@ public class AddNewIdiom extends Activity implements OnClickListener {
         if (v.getId()==R.id.btnsavenew){
             //call the InsertNewIdiom thread
             new InsertNewIdiom().execute();
-            if (success==1){
-                Toast.makeText(getApplicationContext(), "New idiom saved...", Toast.LENGTH_LONG).show();
+            /*if (success==1){
+
             }else{
-                Toast.makeText(getApplicationContext(), "New idiom FAILED to saved...", Toast.LENGTH_LONG).show();
-            }
+
+            }*/
         }
 
     }
 
-    */
 /**
      * Background Async Task to Create new Idioms
-     * *//*
+     * */
 
     class InsertNewIdiom extends AsyncTask<String, String, String> {
         //capture values from EditText
         String entry = txtnewidiom.getText().toString();
         String meaning = txtmeaning.getText().toString();
 
-        */
 /**
          * Before starting background thread Show Progress Dialog
-         * *//*
+         * */
 
         @Override
         protected void onPreExecute() {
@@ -103,10 +100,9 @@ public class AddNewIdiom extends Activity implements OnClickListener {
             pDialog.show();
         }
 
-        */
 /**
          * Inserting the new idiom
-         * *//*
+         * */
 
         protected String doInBackground(String... args) {
 
@@ -118,11 +114,10 @@ public class AddNewIdiom extends Activity implements OnClickListener {
 
             // getting JSON Object
             // Note that create product url accepts GET method
-            JSONObject json = jsonParser.makeHttpRequest(url_insert_new,
-                    "GET", params);
+            JSONObject json = jsonParser.makeHttpRequest(url_insert_new, "POST", params);
 
             // check log cat from response
-            Log.d("Insert New Idiom Response", json.toString());
+            //Log.d("Insert New Idiom Response", json.toString());
 
             // check for success tag
             try {
@@ -130,21 +125,21 @@ public class AddNewIdiom extends Activity implements OnClickListener {
 
                 if (success == 1) {
                     // successfully save new idiom
+                    Toast.makeText(getApplicationContext(), "New idiom saved...", Toast.LENGTH_LONG).show();
                 } else {
                     // failed to add new idiom
+                    Toast.makeText(getApplicationContext(), "New idiom FAILED to saved...", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            //return null;
             return null;
         }
 
-        */
 /**
          * After completing background task Dismiss the progress dialog
-         * **//*
+         * **/
 
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
@@ -152,4 +147,4 @@ public class AddNewIdiom extends Activity implements OnClickListener {
         }
 
     }
-}*/
+}

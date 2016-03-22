@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.empire.vince.mutsvaki.addingtomysql.AddNewIdiom;
+
 /**
  * Created by VinceGee on 03/16/2016.
  */
 public class Search extends Activity implements View.OnClickListener {
     private EditText txtkeyword;
     private Button btnsearch;
+    private Button addidiom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class Search extends Activity implements View.OnClickListener {
         txtkeyword=(EditText)findViewById(R.id.txtkeyword);
         btnsearch=(Button)findViewById(R.id.btnsearch);
         btnsearch.setOnClickListener(this);
+        addidiom=(Button)findViewById(R.id.addidiom);
+        addidiom.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -33,6 +38,9 @@ public class Search extends Activity implements View.OnClickListener {
             searchIntent.putExtra("keyword",txtkeyword.getText().toString());
             //call the screen for listing
             startActivity(searchIntent);
+        }else if (v.getId()==R.id.addidiom){
+            Intent add = new Intent(getApplicationContext(), AddNewIdiom.class);
+            startActivity(add);
         }
 
     }

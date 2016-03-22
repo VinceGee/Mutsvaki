@@ -20,6 +20,7 @@
 
         <activity android:name=".ListResult"/>
         <activity android:name=".MainActivityYeSearch"/>
+        <activity android:name=".addingtomysql.AddNewIdiom"/>
     </application>
 
 </manifest>
