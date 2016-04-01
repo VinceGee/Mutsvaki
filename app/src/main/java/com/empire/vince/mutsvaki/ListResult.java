@@ -23,6 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by VinceGee on 03/16/2016.
@@ -38,7 +39,7 @@ public class ListResult extends ListActivity {
     ArrayList<HashMap<String, String>> idiomsList;
 
     // url to get the idiom list
-    private static String url_search = "http://10.41.100.190/merchant/search.php";
+    private static String url_search = "http://192.168.43.213/merchant/searchIdiom.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -115,7 +116,8 @@ public class ListResult extends ListActivity {
             JSONObject json = jParser.makeHttpRequest(url_search, "GET", params);
 
             // Check your log cat for JSON response
-            Log.d("Search idioms: ", json.toString());
+            Log.e("Search idioms: ", json.toString());
+            //Toast.makeText(getApplicationContext(), "NO idioms found",Toast.LENGTH_LONG).show();
 
             try {
                 // Checking for SUCCESS TAG
@@ -149,6 +151,7 @@ public class ListResult extends ListActivity {
                 } else {
                     // no idioms found
                     //do something
+ //                   Toast.makeText(getApplicationContext(), "NO idioms found",Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
